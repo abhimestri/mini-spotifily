@@ -46,7 +46,7 @@ const MusicCard = (props: MusicCardProps) => {
         ) : props?.type === "artist" ? (
           <img
             src={props?.data?.image}
-            className="rounded-full overflow-hidden aspect-square"
+            className="w-full rounded-full overflow-hidden aspect-square"
             alt=""
           />
         ) : (
@@ -57,7 +57,11 @@ const MusicCard = (props: MusicCardProps) => {
             className="rounded-lg bg-[#ccc] h-[160px] mb-[8px]"
           />
         )}
-        <Typography className={`max-w-[90%] !text-[15px] font-sans text-[#FFF] truncate mt-[6px] capitalize ${props?.type === "artist" && "!mt-[8px]"}`}>
+        <Typography
+          className={`max-w-[90%] !text-[15px] font-sans text-[#FFF] truncate mt-[6px] capitalize ${
+            props?.type === "artist" && "!mt-[8px]"
+          }`}
+        >
           {props?.data?.name}
         </Typography>
         {props?.data?.description && (

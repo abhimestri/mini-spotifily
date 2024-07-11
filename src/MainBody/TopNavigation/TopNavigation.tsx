@@ -14,8 +14,6 @@ const TopNavigation: React.FC = (props: TopNavigationProps) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  console.log({location})
- 
     return (
       <div className="sticky top-[6vh] left-[100%] z-50 bg-transparent px-[20px]">
         <div className="flex justify-between">

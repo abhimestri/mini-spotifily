@@ -13,6 +13,22 @@ export const getArtists = async () => {
     );
 };
 
+export const getArtistsDetails = async (id:any) => {
+  return await axios.get(`https://api.spotify.com/v1/artists?ids=${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage?.getItem("token")}`,
+    },
+  });
+}
+
+export const getArtistsTopTracksList = async (id:any) => {
+  return await axios.get(`https://api.spotify.com/v1/artists/${id}/top-tracks`, {
+    headers: {
+      Authorization: `Bearer ${localStorage?.getItem("token")}`,
+    },
+  })
+}
+
 export const getNewRelease = async () => {
     return await axios.get(`https://api.spotify.com/v1/browse/new-releases`, {
       headers: {
@@ -47,6 +63,14 @@ export const getUserPlaylist = async () => {
     );
 }
 
+export const getMyPlaylistDetails = async (id: any) => {
+  return await axios.get(`https://api.spotify.com/v1/playlists/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage?.getItem("token")}`,
+    },
+  });
+}
+
 export const getCategories = async () => {
   return await axios.get(`https://api.spotify.com/v1/browse/categories?limit=40`, {
     headers: {
@@ -55,9 +79,9 @@ export const getCategories = async () => {
   });
 }
 
-export const getCategoriesPlaylist = async () => {
+export const getCategoriesPlaylist = async (id: any) => {
   return await axios?.get(
-    "https://api.spotify.com/v1/browse/categories/{category_id}/playlists",
+    `https://api.spotify.com/v1/browse/categories/${id}/playlists`,
     {
       headers: {
         Authorization: `Bearer ${localStorage?.getItem("token")}`,
@@ -88,3 +112,13 @@ export const getAlbumDetails = async (id: any) => {
   );
 }
 
+export const searchTracks = async (searchParam: string) => {
+  return await axios?.get(
+    `https://api.spotify.com/v1/search?q=${searchParam}&type=album%2Cplaylist%2Ctrack%2Cartist`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage?.getItem("token")}`,
+      },
+    }
+  );
+}

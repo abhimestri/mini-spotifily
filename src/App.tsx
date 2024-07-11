@@ -8,14 +8,13 @@ import ContentArea from './MainBody/ContentArea/ContentArea';
 import PlaylistDetails from './PlaylistDetails/PlaylistDetails';
 import { MusicContext } from "./store/MusicContext"
 import "react-h5-audio-player/lib/styles.css";
+import MadeForYouSection from './MainBody/MadeForYouSection/MadeForYouSection';
 
 function App() {
   
   useEffect(() => {
     getUserData()?.then(data => data)?.catch(err => {
-      console.log({err})
       if(+err?.response?.status === 401 && err?.response?.data?.error?.message === "The access token expired"){
-        console.log("in")
         window?.localStorage?.removeItem("token")
       }
     })
@@ -26,9 +25,13 @@ function App() {
       path: "/",
       element: <MainBody />,
       children: [
-        { path: "/", element: <ContentArea/> },
+        { path: "/", element: <ContentArea /> },
         { path: "/search", element: <SearchSection /> },
-        { path: "/playlist/:id", element: <PlaylistDetails /> }
+        { path: "/playlist/:id", element: <PlaylistDetails /> },
+        { path: "/artists/:id", element: <PlaylistDetails /> },
+        { path: "/my-playlist/:id", element: <PlaylistDetails /> },
+        { path: "/featured-playlist/:id", element: <PlaylistDetails /> },
+        {path: "/genre/:id", element: <MadeForYouSection />}
       ],
     },
   ]);

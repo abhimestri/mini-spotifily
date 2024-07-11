@@ -23,7 +23,6 @@ const [audioUrl, setAudioUrl] = useState<any>("any");
         const hash = window?.location?.hash
         let token:any = window?.localStorage?.getItem("token")
 
-        console.log({hash, token})
         if(!token && hash?.length !== 0){
             token = hash?.substring(1)?.split("&")?.find(elem => elem?.startsWith("access_token"))?.split("=")[1]
             window?.localStorage?.setItem("token", token)
@@ -49,7 +48,6 @@ const [audioUrl, setAudioUrl] = useState<any>("any");
       }
     }, [randomGeneratedColor]);
 
-    console.log({color})
     return (
       <MusicContext.Provider
         value={{ audioUrl: audioUrl, setAudioUrl: setAudioUrl }}

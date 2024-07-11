@@ -5,7 +5,6 @@ import AudioPlayer from "react-h5-audio-player";
 const FooterPlayer = () => {
 
     const { audioUrl } = useContext(MusicContext)
-    console.log({audioUrl})
 
     return (
       <div className="relative w-full h-[100%] bg-[#000]">

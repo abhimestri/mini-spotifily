@@ -4,9 +4,13 @@ import ListItem from "@mui/material/ListItem";
 import Typography from '@mui/material/Typography';
 import { getUserPlaylist } from "../../API/api";
 
+import { useNavigate } from "react-router-dom";
+
 
 const SongList = () => {
     const [playlist, setPlaylist] = useState<Array<any>>([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (playlist?.length === 0) {
@@ -23,7 +27,7 @@ const SongList = () => {
         <List sx={{ width: "100%", maxWidth: 420 }}>
             {playlist?.map(item => {
                 return (
-                  <ListItem>
+                  <ListItem className="cursor-pointer" onClick={() => navigate(`/my-playlist/${item?.id}`)}>
                     <div className="rounded-lg py-[6px] w-full flex gap-x-2 hover:bg-[#1A1A1A]">
                       <div className="grid grid-cols-4 rounded-lg items-center overflow-hidden bg-[#ccc] min-w-[50px] max-w-[50px] h-[50px]">
                         {item?.images?.length >= 4 ? (
