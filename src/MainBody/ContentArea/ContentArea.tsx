@@ -109,7 +109,7 @@ const ContentArea = () => {
             navigatingRoute={"playlist"}
           />
         </div>
-        <div className="mb-[5rem]">
+        <div className="mb-[2rem]">
           <Typography className="!text-[24px] !font-bold !mb-[18px]">
             Artists
           </Typography>
@@ -139,6 +139,9 @@ const ContentArea = () => {
             listData={artistsList}
             type={"artist"}
             navigatingRoute={"artists"}
+            style={{
+              cardClassName: "aspect-[10/14]",
+            }}
           />
         </div>
 

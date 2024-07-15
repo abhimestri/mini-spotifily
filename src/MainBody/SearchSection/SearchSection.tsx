@@ -22,9 +22,6 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
     const [searchData, setSearchData] = useState<any>(null)
     const [searchValue, setSearchValue] = useState<string>(currentSearchValue);
 
-
-    console.log({ location });
-
     useEffect(() => {
         if(categoriesList?.length === 0) {
             getCategories()?.then(data => {
@@ -33,14 +30,7 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
         }
     }, [categoriesList])
 
-    // useEffect(() => {
-    //     const dt = searchTracks("")?.then(data => {
-    //         console.log({data})
-    //     })
-    // }, [])
-
     const getSearchData = (e: any) => {
-        console.log(e?.target?.value)
         if (e?.target?.value) {
           searchTracks(e?.target?.value)?.then((data: any) => {
             setSearchData(data?.data);
@@ -55,12 +45,10 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
             query: e?.target?.value,
           }).toString(),
         });
-        debounce(() => getSearchData(e), 1200)();
+        debounce(() => getSearchData(e), 500)();
     };
-    console.log({currentSearchValue, searchValue})
 
     useEffect(() => {
-      console.log("in");
       if (currentSearchValue && !searchData) {
         searchTracks(currentSearchValue)?.then((data) => {
           setSearchData(data?.data);

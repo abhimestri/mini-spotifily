@@ -20,8 +20,6 @@ const TopResultSection = (props: TopResultSectionProps) => {
       audioUrl: props?.data ? props?.data[0]?.preview_url : "",
     };
 
-    console.log({firstItemData})
-
     return (
       <>
         <div className="col-span-5">

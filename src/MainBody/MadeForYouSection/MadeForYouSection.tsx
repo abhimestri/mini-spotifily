@@ -21,7 +21,6 @@ const MadeForYouSection: React.FC<MadeForYouSectionProps> = (data) => {
     useEffect(() => {
         if (!genreDetails && currentDetailsType === "genre") {
           getCategoriesPlaylist(params?.id)?.then((data) => {
-            console.log({ data });
             setGenreDetails(data?.data)
           });
         }

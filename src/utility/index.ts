@@ -22,7 +22,7 @@ export const parseDuration = (time: number) => {
 
 interface parseDataForSubcontentTypeProps {
     dataList:any;
-    type: "new-release" | "artist" | "playlist" | "album"
+    type?: "new-release" | "artist" | "playlist" | "album" | "track"
 }
 
 export const parseDataForSubcontentType = (
@@ -34,7 +34,14 @@ export const parseDataForSubcontentType = (
           name: item?.name ? item?.name : null,
           date: item?.release_date ? item?.release_date : null,
           description: item?.type ? item?.type : null,
-          images: item?.images ? item?.images : null,
+          images:
+            props?.type === "track"
+              ? item?.album?.images?.length >= 1
+                ? item?.album?.images
+                : ""
+              : item?.images
+              ? item?.images
+              : null,
         };
     })
 };
