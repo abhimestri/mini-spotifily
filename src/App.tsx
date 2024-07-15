@@ -9,6 +9,7 @@ import PlaylistDetails from './PlaylistDetails/PlaylistDetails';
 import { MusicContext } from "./store/MusicContext"
 import "react-h5-audio-player/lib/styles.css";
 import MadeForYouSection from './MainBody/MadeForYouSection/MadeForYouSection';
+import CreateNewPlayList from './PlaylistDetails/CreateNewPlaylist';
 
 function App() {
   
@@ -31,7 +32,8 @@ function App() {
         { path: "/artists/:id", element: <PlaylistDetails /> },
         { path: "/my-playlist/:id", element: <PlaylistDetails /> },
         { path: "/featured-playlist/:id", element: <PlaylistDetails /> },
-        {path: "/genre/:id", element: <MadeForYouSection />}
+        { path: "/genre/:id", element: <MadeForYouSection /> },
+        { path: "/new-playlist", element: <CreateNewPlayList /> },
       ],
     },
   ]);

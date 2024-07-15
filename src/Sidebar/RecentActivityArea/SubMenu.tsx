@@ -5,8 +5,12 @@ import TailedArrowForwardIcon from "../../assets/TailedArrowForward.svg";
 import Search from "../../assets/Search.svg";
 import ListIcon from "../../assets/ListIcon.svg";
 import { Chip } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 const SubMenu = () => {
+
+  const navigate = useNavigate();
+
     return (
       <div className="px-[12px] py-[14px] flex flex-col gap-y-6">
         <div className="flex justify-between items-center">
@@ -17,7 +21,7 @@ const SubMenu = () => {
             </Typography>
           </div>
           <div className="flex gap-x-4">
-            <img src={AddIcon} alt="" />
+            <img src={AddIcon} alt="" className="cursor-pointer" onClick={() => navigate("/new-playlist")} />
             <img src={TailedArrowForwardIcon} alt="" />
           </div>
         </div>
